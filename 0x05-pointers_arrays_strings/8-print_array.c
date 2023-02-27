@@ -1,5 +1,5 @@
+#include <stdio.h>
 #include "main.h"
-#include <string.h>
 
 /**
  * print_array - is then mai
@@ -11,6 +11,7 @@
 void print_array(int *a, int n)
 {
 int b = 0;
+
 for (; b < n; b++)
 {
 printf("%d", a[b]);
