@@ -1,32 +1,29 @@
 #include "main.h"
 
 /**
- * rot13 - Entry point
- * ONE if, TWO loops only...
- * @n: input
- * Return: decrypted string
+ * rot13 - encodes a string in rot13
+ *
+ * @a: string to encode
+ *
+ * Return: encoded string
  */
-char *rot13(char *n)
+char *rot13(char *a)
 {
-	int x, rot_c = 13, i = 0;
-	char toswap[] = {'A', 'N', 'a', 'n', 'B', 'O', 'b', 'o', 'C', 'P',
-		'c', 'p', 'D', 'Q', 'd', 'q', 'E', 'R', 'e', 'r', 'F', 'S', 'f',
-		's', 'G', 'T', 'g', 't', 'H', 'U', 'h', 'u', 'I', 'V', 'i', 'v',
-		'J', 'W', 'j', 'w', 'K', 'X', 'k', 'x', 'L', 'Y', 'l', 'y', 'M',
-		'Z', 'm', 'z'};
+	char *sptr = a;
+	int index;
+	char trans[2][54] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+				   "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
 
-	while (n[i] != '\0')
+	while (*sptr != 0)
 	{
-		for (x = 0; x <= 51; x++)
+		if ((*sptr >= 'a' && *sptr <= 'z') || (*sptr >= 'A' && *sptr <= 'Z'))
 		{
-			if (n[i] == toswap[x])
-			{
-				n[i] = n[i] + rot_c;
-				x = 51;
-			}
-			rot_c = rot_c * -1;
+			index = 0;
+			while (*sptr != trans[0][index])
+				index++;
+			*sptr = trans[1][index];
 		}
-		i++;
+		sptr++;
 	}
-	return (n);
+	return (a);
 }
