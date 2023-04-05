@@ -3,11 +3,11 @@
 /**
  * add_nodeint_end - adds a node to the end of a linked list
  * @head: pointer to the head of the list
- * @n: number to be used as content
+ * @n: number about to be used as content
  *
- * Return: address of the newly added node
+ * Return: address of the new node
  */
-listint_t *add_nodeint_end(listint_t **head, const int n)
+listint_t *add_nodeint_end(listint_t **head, const int o)
 {
 	listint_t *new_node;
 	listint_t *cursor = *head;
@@ -15,7 +15,7 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 	new_node = malloc(sizeof(listint_t));
 	if (new_node != NULL)
 	{
-		new_node->n = n;
+		new_node->o = o;
 		new_node->next = NULL;
 	}
 	else
